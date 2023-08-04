@@ -13,7 +13,7 @@
 // author: wsfuyibing <websearch@163.com>
 // date: 2023-08-04
 
-package service
+package xs
 
 import (
 	"sync"
