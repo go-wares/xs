@@ -1,0 +1,6 @@
+#
+# Connection configuration
+#
+db:
+  dsn:
+    - username:password@tcp(127.0.0.1:3306)/undefined?charset=utf8

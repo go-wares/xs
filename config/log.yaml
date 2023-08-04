@@ -1,0 +1,33 @@
+name: xorm-service
+version: 1.0
+auto_start: true
+#
+# Common
+#
+level: "DEBUG"
+log_time_format: "2006-01-02 15:04:05.999999"
+# 
+# Log section
+#
+log_adapter: "term"
+log_adapter_file:
+  batch: 100
+  milliseconds: 350
+  path: "./logs"
+  folder: "2006-01"
+  name: "2006-01-02"
+  ext: "log"
+log_adapter_kafka:
+  host:
+    - 172.20.0.128:9092
+  topic: logs
+log_adapter_term:
+  color: true
+#
+# Trace section
+#
+trace_adapter: "jaeger"
+trace_adapter_jaeger:
+  endpoint: http://127.0.0.1:14268/api/traces
+  username: 
+  password: 
