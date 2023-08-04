@@ -1,4 +1,4 @@
-module github.com/go-wares/service
+module github.com/go-wares/xs
 
 go 1.13
 
