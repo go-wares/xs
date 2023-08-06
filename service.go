@@ -27,14 +27,19 @@ type (
 		Clean()
 		Master(ctx context.Context) *xorm.Session
 		MasterWith(ctx context.Context, name string) *xorm.Session
+		Name() string
 		Slave(ctx context.Context) *xorm.Session
 		SlaveWith(ctx context.Context, name string) *xorm.Session
 		With(opts ...Option)
+		WithName(name string)
 	}
 
 	// Service
 	// for top level configurations.
-	Service struct{ session *xorm.Session }
+	Service struct {
+		name    string
+		session *xorm.Session
+	}
 )
 
 func (o *Service) Clean() {
@@ -51,6 +56,8 @@ func (o *Service) MasterWith(ctx context.Context, name string) *xorm.Session {
 	return Connection.MasterWith(ctx, name)
 }
 
+func (o *Service) Name() string { return o.name }
+
 func (o *Service) Slave(ctx context.Context) *xorm.Session {
 	return Connection.Slave(ctx)
 }
@@ -64,3 +71,5 @@ func (o *Service) With(opts ...Option) {
 		opt(o)
 	}
 }
+
+func (o *Service) WithName(name string) { o.name = name }
